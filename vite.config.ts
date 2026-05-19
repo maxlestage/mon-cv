@@ -1,9 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Site servi à la racine "/".
-// Requiert un dépôt <utilisateur>.github.io ou un domaine personnalisé.
+// Le site est servi sur https://<user>.github.io/mon-cv/
+// donc le base path doit correspondre au nom du dépôt.
 export default defineConfig({
-  base: "/",
+  base: "/mon-cv/",
   plugins: [react()],
 });
