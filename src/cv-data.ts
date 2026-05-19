@@ -319,4 +319,6 @@ export const uiStrings: UIStrings = {
     languages: { fr: "Langues", en: "Languages" },
   },
   print: { fr: "Imprimer / PDF", en: "Print / PDF" },
+  nav: { fr: "Navigation du CV", en: "CV navigation" },
+  skipToContent: { fr: "Aller au contenu", en: "Skip to content" },
 };

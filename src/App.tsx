@@ -1,9 +1,20 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { cvData, uiStrings } from "./cv-data";
 import { useI18n } from "./i18n";
-import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { Nav, type NavItem } from "./components/Nav";
 
 const Scene = lazy(() => import("./components/Scene"));
+
+const NAV_ITEMS: NavItem[] = [
+  { id: "profil", label: uiStrings.sections.summary },
+  { id: "experience", label: uiStrings.sections.experience },
+  { id: "autres", label: uiStrings.sections.otherExperience },
+  { id: "formation", label: uiStrings.sections.education },
+  { id: "competences", label: uiStrings.sections.skills },
+  { id: "langues", label: uiStrings.sections.languages },
+  { id: "atouts", label: uiStrings.sections.strengths },
+];
+const NAV_IDS = NAV_ITEMS.map((i) => i.id);
 
 function Avatar({ src, alt }: { src: string; alt: string }) {
   const [ok, setOk] = useState(true);
@@ -31,10 +42,37 @@ function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
+function useActiveSection(ids: string[]): string {
+  const [active, setActive] = useState(ids[0] ?? "");
+
+  useEffect(() => {
+    const els = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (els.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-30% 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [ids]);
+
+  return active;
+}
+
 export default function App() {
   const { locale } = useI18n();
-  const { sections, print } = uiStrings;
+  const { sections, print, nav, skipToContent } = uiStrings;
   const reducedMotion = usePrefersReducedMotion();
+  const active = useActiveSection(NAV_IDS);
 
   return (
     <>
@@ -49,18 +87,21 @@ export default function App() {
         )}
       </div>
 
-      <main className="cv">
-        <div className="toolbar no-print">
-          <LanguageSwitcher />
-          <button
-            type="button"
-            className="print-btn"
-            onClick={() => window.print()}
-          >
-            {print[locale]}
-          </button>
-        </div>
+      <a href="#content" className="skip-link">
+        {skipToContent[locale]}
+      </a>
 
+      <Nav
+        items={NAV_ITEMS}
+        active={active}
+        locale={locale}
+        brand={cvData.name}
+        navLabel={nav[locale]}
+        printLabel={print[locale]}
+        onPrint={() => window.print()}
+      />
+
+      <main className="cv" id="content" tabIndex={-1}>
         <header className="header">
           <div className="header-main">
             <h1>{cvData.name}</h1>
@@ -88,12 +129,12 @@ export default function App() {
           )}
         </header>
 
-        <section className="section">
+        <section className="section" id="profil" aria-label={sections.summary[locale]}>
           <h2>{sections.summary[locale]}</h2>
           <p className="summary">{cvData.summary[locale]}</p>
         </section>
 
-        <section className="section">
+        <section className="section" id="experience" aria-label={sections.experience[locale]}>
           <h2>{sections.experience[locale]}</h2>
           {cvData.experiences.map((exp, i) => (
             <article className="item" key={`${exp.company}-${i}`}>
@@ -116,7 +157,7 @@ export default function App() {
           ))}
         </section>
 
-        <section className="section">
+        <section className="section" id="autres" aria-label={sections.otherExperience[locale]}>
           <h2>{sections.otherExperience[locale]}</h2>
           <ul className="other-list">
             {cvData.otherExperiences.map((e, i) => (
@@ -130,7 +171,7 @@ export default function App() {
           </ul>
         </section>
 
-        <section className="section">
+        <section className="section" id="formation" aria-label={sections.education[locale]}>
           <h2>{sections.education[locale]}</h2>
           {cvData.education.map((ed, i) => (
             <article className="item" key={`${ed.school}-${i}`}>
@@ -153,7 +194,7 @@ export default function App() {
         </section>
 
         <div className="two-col">
-          <section className="section">
+          <section className="section" id="competences" aria-label={sections.skills[locale]}>
             <h2>{sections.skills[locale]}</h2>
             {cvData.skills.map((group) => (
               <div className="skill-group" key={group.category[locale]}>
@@ -169,7 +210,7 @@ export default function App() {
             ))}
           </section>
 
-          <section className="section">
+          <section className="section" id="langues" aria-label={sections.languages[locale]}>
             <h2>{sections.languages[locale]}</h2>
             <ul className="languages">
               {cvData.languages.map((lang) => (
@@ -191,7 +232,7 @@ export default function App() {
           </section>
         </div>
 
-        <section className="section">
+        <section className="section" id="atouts" aria-label={sections.strengths[locale]}>
           <h2>{sections.strengths[locale]}</h2>
           <div className="strengths">
             {cvData.strengths.map((s) => (
