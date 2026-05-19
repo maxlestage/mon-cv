@@ -324,7 +324,10 @@ export const uiStrings: UIStrings = {
   cvWordmark: { fr: "Curriculum Vitæ", en: "Curriculum Vitae" },
   brief: { fr: "En bref", en: "Brief information" },
   contact: { fr: "Contact", en: "Contact" },
-  more: { fr: "Plus d'infos", en: "More info" },
+  more: { fr: "Plus d'infos", en: "More Info" },
   less: { fr: "Réduire", en: "Close" },
   actual: { fr: "À jour", en: "Actual" },
+  menu: { fr: "Menu", en: "Menu" },
+  menuClose: { fr: "Fermer", en: "Close" },
+  downloadCV: { fr: "Télécharger le CV", en: "Download CV" },
 };
