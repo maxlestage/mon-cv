@@ -80,4 +80,6 @@ export interface UIStrings {
     languages: Localized;
   };
   print: Localized;
+  nav: Localized;
+  skipToContent: Localized;
 }
