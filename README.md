@@ -36,13 +36,9 @@ construit et déploie le site à chaque push sur `master`/`main`.
 Configuration unique côté GitHub : **Settings → Pages → Build and deployment →
 Source : GitHub Actions**.
 
-Le `base` est défini sur `/` dans `vite.config.ts` : le site est servi à la
-racine. Cela nécessite **l'une** de ces configurations GitHub Pages :
+Le site est servi sur : **`https://maxlestage.github.io/mon-cv/`**
 
-- un dépôt nommé `maxlestage.github.io` → `https://maxlestage.github.io/`
-- **ou** un domaine personnalisé (ajoute un fichier `public/CNAME` contenant
-  ton domaine, et configure-le dans Settings → Pages)
-
-> Sans cela, un dépôt projet (`mon-cv`) est servi sur
-> `https://maxlestage.github.io/mon-cv/` et les assets renverraient des 404
-> avec `base: "/"`. Dans ce cas, remets `base: "/mon-cv/"`.
+> Le `base` est défini sur `/mon-cv/` dans `vite.config.ts`, ce qui correspond
+> au nom du dépôt (dépôt projet GitHub Pages). Si tu renommes le dépôt, mets
+> cette valeur à jour. Pour servir à la racine (`/`), il faudrait soit un dépôt
+> nommé `maxlestage.github.io`, soit un domaine personnalisé.
