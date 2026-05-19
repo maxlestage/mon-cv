@@ -1,0 +1,267 @@
+:root {
+  --bg: #f4f5f7;
+  --paper: #ffffff;
+  --ink: #1a1a2e;
+  --muted: #5b6472;
+  --accent: #2563eb;
+  --line: #e3e6ea;
+  --radius: 10px;
+  --maxw: 820px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  line-height: 1.55;
+  padding: 2rem 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.cv {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  background: var(--paper);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  padding: 2.5rem;
+}
+
+/* Toolbar -------------------------------------------------- */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.lang-btn {
+  border: 0;
+  background: transparent;
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+}
+.lang-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.print-btn {
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.print-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Header --------------------------------------------------- */
+.header {
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.header h1 {
+  font-size: 2.2rem;
+  letter-spacing: -0.02em;
+}
+.header .title {
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+.contacts {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+.contacts li {
+  display: flex;
+  flex-direction: column;
+}
+.contact-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* Sections ------------------------------------------------- */
+.section {
+  margin-bottom: 1.8rem;
+}
+.section h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+.summary {
+  color: var(--ink);
+}
+
+.item {
+  margin-bottom: 1.1rem;
+}
+.item:last-child {
+  margin-bottom: 0;
+}
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.item-head h3 {
+  font-size: 1rem;
+}
+.item-head .org {
+  color: var(--accent);
+}
+.period {
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.location {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.highlights {
+  margin: 0.4rem 0 0 1.1rem;
+  font-size: 0.92rem;
+}
+.highlights li {
+  margin-bottom: 0.2rem;
+}
+
+/* Two columns ---------------------------------------------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.8rem;
+}
+
+.skill-group {
+  margin-bottom: 0.9rem;
+}
+.skill-group h4 {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.tags,
+.languages {
+  list-style: none;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.tag {
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 0.8rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 6px;
+}
+.languages li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.languages li:last-child {
+  border-bottom: 0;
+}
+.languages .level {
+  color: var(--muted);
+}
+
+/* Responsive ----------------------------------------------- */
+@media (max-width: 640px) {
+  body {
+    padding: 0.5rem;
+  }
+  .cv {
+    padding: 1.5rem;
+  }
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Print ---------------------------------------------------- */
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+  }
+  .cv {
+    box-shadow: none;
+    border-radius: 0;
+    max-width: none;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+  a {
+    color: var(--ink);
+  }
+  .section,
+  .item {
+    break-inside: avoid;
+  }
+}
