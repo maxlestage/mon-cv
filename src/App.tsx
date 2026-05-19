@@ -2,13 +2,13 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { cvData, uiStrings } from "./cv-data";
 import { useI18n } from "./i18n";
 import { Nav, type NavItem } from "./components/Nav";
-import { Counter } from "./components/Counter";
 import { Expandable } from "./components/Expandable";
+import { BottomCTAs } from "./components/BottomCTAs";
 
 const Scene = lazy(() => import("./components/Scene"));
 
 const NAV_ITEMS: NavItem[] = [
-  { id: "brief", label: uiStrings.brief },
+  { id: "about", label: uiStrings.brief },
   { id: "experience", label: uiStrings.sections.experience },
   { id: "formation", label: uiStrings.sections.education },
   { id: "competences", label: uiStrings.sections.skills },
@@ -18,20 +18,13 @@ const NAV_ITEMS: NavItem[] = [
 ];
 const NAV_IDS = NAV_ITEMS.map((i) => i.id);
 
-function stamp(): string {
-  const d = new Date();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const yy = String(d.getFullYear()).slice(-2);
-  return `${mm}.${yy}`;
-}
-
-function Avatar({ src, alt }: { src: string; alt: string }) {
+function Portrait({ src, alt }: { src: string; alt: string }) {
   const [ok, setOk] = useState(true);
   if (!ok) return null;
   return (
-    <div className="avatar">
+    <figure className="hero-portrait">
       <img src={src} alt={alt} onError={() => setOk(false)} />
-    </div>
+    </figure>
   );
 }
 
@@ -79,8 +72,18 @@ function useActiveSection(ids: string[]): string {
 
 export default function App() {
   const { locale } = useI18n();
-  const { sections, print, nav, skipToContent, brief, contact, more, less, actual, cvWordmark } =
-    uiStrings;
+  const {
+    sections,
+    nav,
+    skipToContent,
+    brief,
+    contact,
+    more,
+    less,
+    menu,
+    menuClose,
+    downloadCV,
+  } = uiStrings;
   const reducedMotion = usePrefersReducedMotion();
   const activeSection = useActiveSection(NAV_IDS);
 
@@ -107,33 +110,42 @@ export default function App() {
         locale={locale}
         brand={cvData.name}
         navLabel={nav[locale]}
-        printLabel={print[locale]}
-        onPrint={() => window.print()}
+        menuLabel={menu[locale]}
+        closeLabel={menuClose[locale]}
       />
 
       <main className="cv" id="content" tabIndex={-1}>
-        <header className="hero">
-          <p className="hero-kicker">
-            <span>
-              {cvWordmark[locale]} — {actual[locale]} ({stamp()})
-            </span>
-            <Counter reduced={reducedMotion} />
-          </p>
-          <h1>{cvData.name}</h1>
-          <p className="hero-title">{cvData.title[locale]}</p>
-        </header>
-
-        <section className="section" id="brief" aria-label={brief[locale]}>
-          <h2>{brief[locale]}</h2>
-          <div className="brief">
-            {cvData.photo && (
-              <Avatar
-                src={`${import.meta.env.BASE_URL}${cvData.photo}`}
-                alt={cvData.name}
-              />
-            )}
-            <p className="summary">{cvData.summary[locale]}</p>
+        <section className="hero" id="top">
+          {cvData.photo && (
+            <Portrait
+              src={`${import.meta.env.BASE_URL}${cvData.photo}`}
+              alt={cvData.name}
+            />
+          )}
+          <div className="hero-intro">
+            <p>{cvData.summary[locale]}</p>
+            <p className="hero-byline">
+              <em>{cvData.name}</em> — {cvData.title[locale]}
+            </p>
           </div>
+        </section>
+
+        <section className="section" id="about" aria-label={brief[locale]}>
+          <h2>{brief[locale]}</h2>
+          <ul className="meta-grid">
+            {cvData.contacts.slice(0, 3).map((c) => (
+              <li key={c.label[locale]}>
+                <span className="meta-label">{c.label[locale]}</span>
+                {c.href ? (
+                  <a href={c.href} target="_blank" rel="noreferrer">
+                    {c.value}
+                  </a>
+                ) : (
+                  <span>{c.value}</span>
+                )}
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section
@@ -147,21 +159,12 @@ export default function App() {
               key={`${exp.company}-${i}`}
               moreLabel={more[locale]}
               lessLabel={less[locale]}
-              title={
-                <>
-                  {exp.role[locale]} ·{" "}
-                  <span className="org">{exp.company}</span>
-                </>
-              }
-              meta={
-                <>
-                  <span className="period">{exp.period[locale]}</span>
-                  {exp.location && (
-                    <span className="dot-sep">{exp.location[locale]}</span>
-                  )}
-                </>
-              }
+              title={exp.company}
             >
+              <p className="role-line">
+                <em>{exp.role[locale]}</em> · {exp.period[locale]}
+                {exp.location && <> · {exp.location[locale]}</>}
+              </p>
               <ul className="highlights">
                 {exp.highlights.map((h, j) => (
                   <li key={j}>{h[locale]}</li>
@@ -182,14 +185,11 @@ export default function App() {
               key={`${ed.school}-${i}`}
               moreLabel={more[locale]}
               lessLabel={less[locale]}
-              title={
-                <>
-                  {ed.degree[locale]} ·{" "}
-                  <span className="org">{ed.school}</span>
-                </>
-              }
-              meta={<span className="period">{ed.period[locale]}</span>}
+              title={ed.school}
             >
+              <p className="role-line">
+                <em>{ed.degree[locale]}</em> · {ed.period[locale]}
+              </p>
               {ed.details && (
                 <ul className="highlights">
                   {ed.details.map((d, j) => (
@@ -207,37 +207,34 @@ export default function App() {
           aria-label={sections.skills[locale]}
         >
           <h2>{sections.skills[locale]}</h2>
-          {cvData.skills.map((group) => (
-            <div className="skill-group" key={group.category[locale]}>
-              <h4>{group.category[locale]}</h4>
-              <ul className="tags">
-                {group.items.map((item) => (
-                  <li key={item} className="tag">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          <dl className="skill-list">
+            {cvData.skills.map((group) => (
+              <div className="skill-row" key={group.category[locale]}>
+                <dt>
+                  <em>{group.category[locale]}</em>
+                </dt>
+                <dd>{group.items.join(" · ")}</dd>
+              </div>
+            ))}
+            <div className="skill-row">
+              <dt>
+                <em>{sections.languages[locale]}</em>
+              </dt>
+              <dd>
+                {cvData.languages
+                  .map(
+                    (l) => `${l.name[locale]} (${l.level[locale].toLowerCase()})`,
+                  )
+                  .join(" · ")}
+              </dd>
             </div>
-          ))}
-
-          <h3 className="subhead">{sections.languages[locale]}</h3>
-          <ul className="languages">
-            {cvData.languages.map((lang) => (
-              <li key={lang.name[locale]}>
-                <strong>{lang.name[locale]}</strong>
-                <span className="level">{lang.level[locale]}</span>
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="subhead">{sections.interests[locale]}</h3>
-          <ul className="tags">
-            {cvData.interests.map((it) => (
-              <li key={it[locale]} className="tag">
-                {it[locale]}
-              </li>
-            ))}
-          </ul>
+            <div className="skill-row">
+              <dt>
+                <em>{sections.interests[locale]}</em>
+              </dt>
+              <dd>{cvData.interests.map((it) => it[locale]).join(" · ")}</dd>
+            </div>
+          </dl>
         </section>
 
         <section
@@ -249,7 +246,9 @@ export default function App() {
           <div className="strengths">
             {cvData.strengths.map((s) => (
               <div className="strength" key={s.name[locale]}>
-                <h4>{s.name[locale]}</h4>
+                <h3>
+                  <em>{s.name[locale]}</em>
+                </h3>
                 <p>{s.description[locale]}</p>
               </div>
             ))}
@@ -265,8 +264,11 @@ export default function App() {
           <ul className="other-list">
             {cvData.otherExperiences.map((e, i) => (
               <li key={`${e.org}-${i}`}>
-                <span>
-                  <strong>{e.role[locale]}</strong> · {e.org}
+                <span className="role-org">
+                  {e.org}{" "}
+                  <span className="role-name">
+                    — <em>{e.role[locale]}</em>
+                  </span>
                 </span>
                 <span className="period">{e.period[locale]}</span>
               </li>
@@ -274,16 +276,11 @@ export default function App() {
           </ul>
         </section>
 
-        <section
-          className="section"
-          id="contact"
-          aria-label={contact[locale]}
-        >
+        <section className="section" id="contact" aria-label={contact[locale]}>
           <h2>{contact[locale]}</h2>
           <ul className="contact-list">
             {cvData.contacts.map((c) => (
               <li key={c.label[locale]}>
-                <span className="contact-label">{c.label[locale]}</span>
                 {c.href ? (
                   <a href={c.href} target="_blank" rel="noreferrer">
                     {c.value}
@@ -291,15 +288,24 @@ export default function App() {
                 ) : (
                   <span>{c.value}</span>
                 )}
+                <span className="contact-label">{c.label[locale]}</span>
               </li>
             ))}
           </ul>
         </section>
 
         <footer className="footer no-print">
-          <span>Built with Bun · React · React Three Fiber · Vite</span>
+          <span>
+            <em>Maxime Lestage</em> — {new Date().getFullYear()}
+          </span>
         </footer>
       </main>
+
+      <BottomCTAs
+        downloadLabel={downloadCV[locale]}
+        contactLabel={contact[locale]}
+        groupLabel={nav[locale]}
+      />
     </>
   );
 }

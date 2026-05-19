@@ -88,4 +88,7 @@ export interface UIStrings {
   more: Localized;
   less: Localized;
   actual: Localized;
+  menu: Localized;
+  menuClose: Localized;
+  downloadCV: Localized;
 }
