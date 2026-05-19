@@ -10,22 +10,20 @@ function Blob() {
     const m = ref.current;
     if (!m) return;
     const t = state.clock.elapsedTime;
-    m.rotation.x = t * 0.08;
-    m.rotation.y = t * 0.12;
+    m.rotation.x = t * 0.06;
+    m.rotation.y = t * 0.09;
   });
 
   return (
-    <Float speed={1.1} rotationIntensity={0.6} floatIntensity={1.1}>
-      <mesh ref={ref} scale={2.2}>
+    <Float speed={0.9} rotationIntensity={0.5} floatIntensity={0.9}>
+      <mesh ref={ref} scale={2.3}>
         <icosahedronGeometry args={[1, 28]} />
         <MeshDistortMaterial
-          color="#cfe9a6"
-          emissive="#d8cdf2"
-          emissiveIntensity={0.35}
-          roughness={0.55}
-          metalness={0.08}
-          distort={0.36}
-          speed={1.3}
+          color="#e9e9e7"
+          roughness={0.85}
+          metalness={0}
+          distort={0.3}
+          speed={1}
         />
       </mesh>
     </Float>
@@ -39,14 +37,14 @@ function Wire() {
     const m = ref.current;
     if (!m) return;
     const t = state.clock.elapsedTime;
-    m.rotation.x = -t * 0.05;
-    m.rotation.z = t * 0.07;
+    m.rotation.x = -t * 0.04;
+    m.rotation.z = t * 0.05;
   });
 
   return (
-    <mesh ref={ref} scale={3.5}>
+    <mesh ref={ref} scale={3.6}>
       <icosahedronGeometry args={[1, 1]} />
-      <meshBasicMaterial color="#c2add6" wireframe transparent opacity={0.16} />
+      <meshBasicMaterial color="#9a9a98" wireframe transparent opacity={0.1} />
     </mesh>
   );
 }
@@ -59,20 +57,19 @@ export default function Scene() {
       gl={{ antialias: true, alpha: true }}
       style={{ width: "100%", height: "100%" }}
     >
-      <fog attach="fog" args={["#f5f5ef", 6, 18]} />
-      <ambientLight intensity={0.85} />
-      <directionalLight position={[5, 5, 5]} intensity={0.8} color="#ffffff" />
-      <pointLight position={[-6, -3, -3]} intensity={1.6} color="#c9b6ef" />
-      <pointLight position={[6, 4, 2]} intensity={1.4} color="#bcd9f2" />
+      <fog attach="fog" args={["#fafafa", 6, 18]} />
+      <ambientLight intensity={1.1} />
+      <directionalLight position={[5, 5, 5]} intensity={0.6} color="#ffffff" />
+      <pointLight position={[-6, -3, -3]} intensity={0.8} color="#dcdcdc" />
       <Wire />
       <Blob />
       <Sparkles
-        count={120}
+        count={80}
         scale={[14, 9, 8]}
-        size={2}
-        speed={0.3}
-        color="#b3a1dd"
-        opacity={0.4}
+        size={1.6}
+        speed={0.22}
+        color="#b8b8b6"
+        opacity={0.28}
       />
     </Canvas>
   );
