@@ -24,8 +24,8 @@ export default function App() {
         <p className="title">{cvData.title[locale]}</p>
         <ul className="contacts">
           {cvData.contacts.map((c) => (
-            <li key={c.label}>
-              <span className="contact-label">{c.label}</span>
+            <li key={c.label[locale]}>
+              <span className="contact-label">{c.label[locale]}</span>
               {c.href ? (
                 <a href={c.href} target="_blank" rel="noreferrer">
                   {c.value}
@@ -66,6 +66,20 @@ export default function App() {
       </section>
 
       <section className="section">
+        <h2>{sections.otherExperience[locale]}</h2>
+        <ul className="other-list">
+          {cvData.otherExperiences.map((e, i) => (
+            <li key={`${e.org}-${i}`}>
+              <span>
+                <strong>{e.role[locale]}</strong> · {e.org}
+              </span>
+              <span className="period">{e.period[locale]}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="section">
         <h2>{sections.education[locale]}</h2>
         {cvData.education.map((ed, i) => (
           <article className="item" key={`${ed.school}-${i}`}>
@@ -76,6 +90,13 @@ export default function App() {
               </h3>
               <span className="period">{ed.period[locale]}</span>
             </div>
+            {ed.details && (
+              <ul className="highlights">
+                {ed.details.map((d, j) => (
+                  <li key={j}>{d[locale]}</li>
+                ))}
+              </ul>
+            )}
           </article>
         ))}
       </section>
@@ -107,8 +128,29 @@ export default function App() {
               </li>
             ))}
           </ul>
+
+          <h2 className="spaced">{sections.interests[locale]}</h2>
+          <ul className="tags">
+            {cvData.interests.map((it) => (
+              <li key={it[locale]} className="tag">
+                {it[locale]}
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
+
+      <section className="section">
+        <h2>{sections.strengths[locale]}</h2>
+        <div className="strengths">
+          {cvData.strengths.map((s) => (
+            <div className="strength" key={s.name[locale]}>
+              <h4>{s.name[locale]}</h4>
+              <p>{s.description[locale]}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
