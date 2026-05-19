@@ -321,4 +321,10 @@ export const uiStrings: UIStrings = {
   print: { fr: "Imprimer / PDF", en: "Print / PDF" },
   nav: { fr: "Navigation du CV", en: "CV navigation" },
   skipToContent: { fr: "Aller au contenu", en: "Skip to content" },
+  cvWordmark: { fr: "Curriculum Vitæ", en: "Curriculum Vitae" },
+  brief: { fr: "En bref", en: "Brief information" },
+  contact: { fr: "Contact", en: "Contact" },
+  more: { fr: "Plus d'infos", en: "More info" },
+  less: { fr: "Réduire", en: "Close" },
+  actual: { fr: "À jour", en: "Actual" },
 };
