@@ -5,6 +5,16 @@ import { LanguageSwitcher } from "./components/LanguageSwitcher";
 
 const Scene = lazy(() => import("./components/Scene"));
 
+function Avatar({ src, alt }: { src: string; alt: string }) {
+  const [ok, setOk] = useState(true);
+  if (!ok) return null;
+  return (
+    <div className="avatar">
+      <img src={src} alt={alt} onError={() => setOk(false)} />
+    </div>
+  );
+}
+
 function usePrefersReducedMotion(): boolean {
   const [reduced, setReduced] = useState(() => {
     if (typeof window === "undefined") return true;
@@ -52,22 +62,30 @@ export default function App() {
         </div>
 
         <header className="header">
-          <h1>{cvData.name}</h1>
-          <p className="title">{cvData.title[locale]}</p>
-          <ul className="contacts">
-            {cvData.contacts.map((c) => (
-              <li key={c.label[locale]}>
-                <span className="contact-label">{c.label[locale]}</span>
-                {c.href ? (
-                  <a href={c.href} target="_blank" rel="noreferrer">
-                    {c.value}
-                  </a>
-                ) : (
-                  <span>{c.value}</span>
-                )}
-              </li>
-            ))}
-          </ul>
+          <div className="header-main">
+            <h1>{cvData.name}</h1>
+            <p className="title">{cvData.title[locale]}</p>
+            <ul className="contacts">
+              {cvData.contacts.map((c) => (
+                <li key={c.label[locale]}>
+                  <span className="contact-label">{c.label[locale]}</span>
+                  {c.href ? (
+                    <a href={c.href} target="_blank" rel="noreferrer">
+                      {c.value}
+                    </a>
+                  ) : (
+                    <span>{c.value}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {cvData.photo && (
+            <Avatar
+              src={`${import.meta.env.BASE_URL}${cvData.photo}`}
+              alt={cvData.name}
+            />
+          )}
         </header>
 
         <section className="section">
