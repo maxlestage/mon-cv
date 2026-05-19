@@ -225,6 +225,43 @@ a:hover {
   color: var(--muted);
 }
 
+h2.spaced {
+  margin-top: 1.4rem;
+}
+
+/* Other experience (compact) ------------------------------- */
+.other-list {
+  list-style: none;
+  font-size: 0.88rem;
+}
+.other-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.other-list li:last-child {
+  border-bottom: 0;
+}
+
+/* Strengths ------------------------------------------------ */
+.strengths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.strength h4 {
+  font-size: 0.92rem;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.strength p {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
 /* Responsive ----------------------------------------------- */
 @media (max-width: 640px) {
   body {
@@ -236,6 +273,10 @@ a:hover {
   .two-col {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+  .strengths {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
   }
   .header h1 {
     font-size: 1.8rem;
