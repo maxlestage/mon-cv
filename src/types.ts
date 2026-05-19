@@ -82,4 +82,10 @@ export interface UIStrings {
   print: Localized;
   nav: Localized;
   skipToContent: Localized;
+  cvWordmark: Localized;
+  brief: Localized;
+  contact: Localized;
+  more: Localized;
+  less: Localized;
+  actual: Localized;
 }
