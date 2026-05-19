@@ -54,6 +54,8 @@ export interface LanguageSkill {
 
 export interface CVData {
   name: string;
+  /** Nom du fichier photo placé dans /public (ex: "profile.jpg"). Optionnel. */
+  photo?: string;
   title: Localized;
   summary: Localized;
   contacts: ContactLink[];

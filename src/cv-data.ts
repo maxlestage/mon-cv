@@ -10,6 +10,9 @@ import type { CVData, UIStrings } from "./types";
 export const cvData: CVData = {
   name: "Maxime Lestage",
 
+  // Dépose ta photo dans le dossier /public sous ce nom (ou change le nom ici).
+  photo: "profile.jpg",
+
   title: {
     fr: "Ingénieur logiciel junior",
     en: "Junior Software Engineer",
