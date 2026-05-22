@@ -240,7 +240,7 @@ export const cvData: CVData = {
   skills: [
     {
       category: { fr: "Langages", en: "Languages" },
-      items: ["Rust", "TypeScript", "JavaScript", "Ruby", "PHP", "Kotlin", "Swift"],
+      items: ["Rust", "JavaScript", "Go", "Java", "Ruby", "PHP", "Kotlin", "Swift", "Lua", "LaTeX"],
     },
     {
       category: { fr: "Front-end", en: "Front-end" },
@@ -254,14 +254,16 @@ export const cvData: CVData = {
         "Prisma.js",
         "Axum.rs",
         "Salvo.rs",
+        "Actix",
         "Ruby on Rails",
         "Symfony",
+        "Laravel",
         "Doctrine",
       ],
     },
     {
       category: { fr: "Bases de données & outils", en: "Databases & tooling" },
-      items: ["MySQL", "Heroku", "Git"],
+      items: ["MySQL", "PostgreSQL", "SQLite", "Heroku", "Git"],
     },
   ],
 
