@@ -70,10 +70,6 @@ export default function App() {
 
   return (
     <>
-      <div className="bg" aria-hidden="true">
-        <div className="bg-gradient" />
-      </div>
-
       <a href="#content" className="skip-link">
         {skipToContent[locale]}
       </a>
