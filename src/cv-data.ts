@@ -23,10 +23,24 @@ export const cvData: CVData = {
     en: "Junior software engineer passionate about new technologies. I enjoy building web and mobile applications, from back-end to front-end. Favorite stack: Rust, Node.js, React.js.",
   },
 
-  note: {
-    fr: "À la suite d'une lésion cérébrale, je suis pour le moment hémiplégique du côté droit — et bien décidé à inverser la tendance. Entre deux retours d'hospitalisation complète, je code chaque week-end : c'est ma meilleure rééducation.",
-    en: "Following a brain injury, I'm currently right-side hemiplegic — and determined to turn the tide. Between stays in full-time hospital care, I code every weekend: it's my best rehab.",
-  },
+  note: [
+    {
+      fr: "Ingénieur R&D chez Orange 🧠 — j'ai construit le futur de la tech, maintenant je reconstruis le mien.",
+      en: "R&D Engineer at Orange 🧠 — I built the future of tech, now I'm rebuilding my own.",
+    },
+    {
+      fr: "Suite à une tumeur, mon côté droit a posé sa dem' sans préavis. Résultat : hémiplégique, mais j'inverse la tendance si vite que les médecins n'en croient pas leurs scanners. 📈🦾",
+      en: "After a tumour, my right side handed in its notice with no warning. Result: hemiplegic — but I'm turning the tide so fast the doctors can't believe their scans. 📈🦾",
+    },
+    {
+      fr: "Mon quotidien : kiné intensive le matin et « reboot » personnel l'après-midi. Le soir, je regarde mon bras droit d'un air déçu, mais je ne lâche rien. 😔",
+      en: "My routine: intensive physio in the morning, personal “reboot” in the afternoon. In the evening I give my right arm a disappointed look — but I never give up. 😔",
+    },
+    {
+      fr: "Je cherche quelqu'un qui swipe à DROITE !!",
+      en: "Looking for someone who swipes RIGHT!!",
+    },
+  ],
 
   contacts: [
     {
