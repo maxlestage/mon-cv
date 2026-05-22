@@ -33,8 +33,8 @@ export const cvData: CVData = {
       en: "After a tumour, my right side handed in its notice with no warning. Result: hemiplegic — but I'm turning the tide so fast the doctors can't believe their scans. 📈🦾",
     },
     {
-      fr: "Mon quotidien : kiné intensive le matin et « reboot » personnel l'après-midi. Le soir, je regarde mon bras droit d'un air déçu, mais je ne lâche rien. 😔",
-      en: "My routine: intensive physio in the morning, personal “reboot” in the afternoon. In the evening I give my right arm a disappointed look — but I never give up. 😔",
+      fr: "Mon quotidien : la semaine, hospitalisation complète — kiné intensive le matin et « reboot » personnel l'après-midi ; le week-end, je rentre à la journée. Et je ne lâche rien. 💪",
+      en: "My routine: full-time hospital care during the week — intensive physio in the morning, personal “reboot” in the afternoon; on weekends I come home for the day. And I never give up. 💪",
     },
   ],
 
