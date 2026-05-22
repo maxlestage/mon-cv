@@ -14,13 +14,13 @@ export const cvData: CVData = {
   photo: "profile.jpg",
 
   title: {
-    fr: "Ingénieur logiciel junior",
-    en: "Junior Software Engineer",
+    fr: "Ingénieur logiciel",
+    en: "Software Engineer",
   },
 
   summary: {
-    fr: "Ingénieur logiciel junior passionné par les nouvelles technologies. J'aime concevoir des applications web et mobiles, du back-end au front-end. Technologies de prédilection : Rust, Node.js, React.js.",
-    en: "Junior software engineer passionate about new technologies. I enjoy building web and mobile applications, from back-end to front-end. Favorite stack: Rust, Node.js, React.js.",
+    fr: "Ingénieur logiciel passionné par les nouvelles technologies. J'aime concevoir des applications web et mobiles, du back-end au front-end. Technologies de prédilection : Rust, Node.js, React.js.",
+    en: "Software engineer passionate about new technologies. I enjoy building web and mobile applications, from back-end to front-end. Favorite stack: Rust, Node.js, React.js.",
   },
 
   note: [
