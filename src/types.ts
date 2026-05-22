@@ -58,8 +58,8 @@ export interface CVData {
   photo?: string;
   title: Localized;
   summary: Localized;
-  /** Note personnelle affichée dans la section « En bref ». Optionnel. */
-  note?: Localized;
+  /** Note personnelle (un paragraphe par entrée) affichée dans « En bref ». Optionnel. */
+  note?: Localized[];
   contacts: ContactLink[];
   experiences: ExperienceItem[];
   otherExperiences: SimpleEntry[];
