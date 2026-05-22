@@ -1,11 +1,9 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { cvData, uiStrings } from "./cv-data";
 import { useI18n } from "./i18n";
 import { Nav, type NavItem } from "./components/Nav";
 import { Expandable } from "./components/Expandable";
 import { BottomCTAs } from "./components/BottomCTAs";
-
-const Scene = lazy(() => import("./components/Scene"));
 
 const NAV_ITEMS: NavItem[] = [
   { id: "about", label: uiStrings.brief },
@@ -26,22 +24,6 @@ function Portrait({ src, alt }: { src: string; alt: string }) {
       <img src={src} alt={alt} onError={() => setOk(false)} />
     </figure>
   );
-}
-
-function usePrefersReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-
-  return reduced;
 }
 
 function useActiveSection(ids: string[]): string {
@@ -84,20 +66,12 @@ export default function App() {
     menuClose,
     downloadCV,
   } = uiStrings;
-  const reducedMotion = usePrefersReducedMotion();
   const activeSection = useActiveSection(NAV_IDS);
 
   return (
     <>
       <div className="bg" aria-hidden="true">
         <div className="bg-gradient" />
-        {!reducedMotion && (
-          <div className="bg-canvas no-print">
-            <Suspense fallback={null}>
-              <Scene />
-            </Suspense>
-          </div>
-        )}
       </div>
 
       <a href="#content" className="skip-link">
