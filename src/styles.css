@@ -284,6 +284,37 @@ em {
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   color: var(--muted);
   margin-bottom: 1.4rem;
+  display: inline-block;
+}
+
+/* Pastel watercolor wash under titles ---------------------- */
+.section > h2,
+.exp-title,
+.strength h3 {
+  position: relative;
+}
+.strength h3 {
+  display: inline-block;
+}
+.section > h2::after,
+.exp-title::after,
+.strength h3::after {
+  content: "";
+  position: absolute;
+  left: -0.22em;
+  right: -0.22em;
+  bottom: 0.02em;
+  height: 0.5em;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42% 135% at 12% 55%, rgba(135, 200, 228, 0.65), transparent 70%),
+    radial-gradient(46% 145% at 40% 42%, rgba(166, 216, 175, 0.6), transparent 72%),
+    radial-gradient(42% 135% at 68% 60%, rgba(135, 200, 228, 0.6), transparent 70%),
+    radial-gradient(38% 125% at 92% 48%, rgba(166, 216, 175, 0.55), transparent 74%);
+  border-radius: 47% 53% 60% 40% / 60% 45% 55% 40%;
+  filter: blur(1.4px);
+  transform: rotate(-0.7deg);
 }
 
 /* About — three-column meta grid (Email, Phone, Location) - */
@@ -620,6 +651,12 @@ em {
   .footer,
   .exp-toggle,
   .no-print {
+    display: none !important;
+  }
+
+  .section > h2::after,
+  .exp-title::after,
+  .strength h3::after {
     display: none !important;
   }
 
