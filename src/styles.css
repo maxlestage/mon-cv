@@ -53,7 +53,7 @@ em {
   }
 }
 
-/* Subtle warm 3D backdrop ---------------------------------- */
+/* Subtle warm backdrop ------------------------------------- */
 .bg {
   position: fixed;
   inset: 0;
@@ -67,14 +67,6 @@ em {
     radial-gradient(70% 50% at 85% 0%, rgba(20, 18, 15, 0.025), transparent 70%),
     radial-gradient(60% 50% at 0% 100%, rgba(20, 18, 15, 0.025), transparent 70%),
     var(--bg);
-}
-.bg-canvas {
-  position: absolute;
-  inset: 0;
-  opacity: 0.22;
-}
-.bg-canvas canvas {
-  display: block;
 }
 
 /* Skip link ------------------------------------------------ */
