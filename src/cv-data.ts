@@ -36,10 +36,6 @@ export const cvData: CVData = {
       fr: "Mon quotidien : kiné intensive le matin et « reboot » personnel l'après-midi. Le soir, je regarde mon bras droit d'un air déçu, mais je ne lâche rien. 😔",
       en: "My routine: intensive physio in the morning, personal “reboot” in the afternoon. In the evening I give my right arm a disappointed look — but I never give up. 😔",
     },
-    {
-      fr: "Je cherche quelqu'un qui swipe à DROITE !!",
-      en: "Looking for someone who swipes RIGHT!!",
-    },
   ],
 
   contacts: [

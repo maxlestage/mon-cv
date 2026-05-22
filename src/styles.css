@@ -365,10 +365,6 @@ em {
 .brief-note p + p {
   margin-top: 0.7rem;
 }
-.brief-note p:last-child {
-  font-style: normal;
-  font-weight: 600;
-}
 
 /* Expandable rows ------------------------------------------ */
 .exp {
