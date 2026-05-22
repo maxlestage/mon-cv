@@ -53,22 +53,6 @@ em {
   }
 }
 
-/* Subtle warm backdrop ------------------------------------- */
-.bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.bg-gradient {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(70% 50% at 85% 0%, rgba(20, 18, 15, 0.025), transparent 70%),
-    radial-gradient(60% 50% at 0% 100%, rgba(20, 18, 15, 0.025), transparent 70%),
-    var(--bg);
-}
-
 /* Skip link ------------------------------------------------ */
 .skip-link {
   position: fixed;
@@ -331,7 +315,7 @@ em {
   font-family: var(--serif);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--faint);
+  color: var(--muted);
 }
 
 /* Expandable rows ------------------------------------------ */
@@ -360,7 +344,7 @@ em {
   font-size: clamp(1.6rem, 4.2vw, 2.4rem);
   font-weight: 400;
   line-height: 1.12;
-  color: var(--faint);
+  color: var(--ink);
   transition: color 0.2s ease;
   min-width: 0;
   word-wrap: break-word;
@@ -373,7 +357,7 @@ em {
   flex-shrink: 0;
   font-family: var(--serif);
   font-size: clamp(0.95rem, 2vw, 1.05rem);
-  color: var(--faint);
+  color: var(--muted);
   white-space: nowrap;
   transition: color 0.2s ease;
 }
@@ -520,7 +504,7 @@ em {
   font-family: var(--serif);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--faint);
+  color: var(--muted);
 }
 
 /* Footer --------------------------------------------------- */
@@ -629,7 +613,6 @@ em {
     font-family: var(--serif);
   }
 
-  .bg,
   .skip-link,
   .topbar,
   .menu-panel,
