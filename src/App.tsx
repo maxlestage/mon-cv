@@ -102,6 +102,7 @@ export default function App() {
 
         <section className="section" id="about" aria-label={brief[locale]}>
           <h2>{brief[locale]}</h2>
+          {cvData.note && <p className="brief-note">{cvData.note[locale]}</p>}
           <ul className="meta-grid">
             {cvData.contacts
               .filter((c) => !c.href)

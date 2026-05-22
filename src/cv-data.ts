@@ -23,6 +23,11 @@ export const cvData: CVData = {
     en: "Junior software engineer passionate about new technologies. I enjoy building web and mobile applications, from back-end to front-end. Favorite stack: Rust, Node.js, React.js.",
   },
 
+  note: {
+    fr: "À la suite d'une lésion cérébrale, je suis pour le moment hémiplégique du côté droit — et bien décidé à inverser la tendance. Entre deux retours d'hospitalisation complète, je code chaque week-end : c'est ma meilleure rééducation.",
+    en: "Following a brain injury, I'm currently right-side hemiplegic — and determined to turn the tide. Between stays in full-time hospital care, I code every weekend: it's my best rehab.",
+  },
+
   contacts: [
     {
       label: { fr: "Email", en: "Email" },
