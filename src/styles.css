@@ -315,7 +315,7 @@ em {
   font-family: var(--serif);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--faint);
+  color: var(--muted);
 }
 
 /* Expandable rows ------------------------------------------ */
@@ -344,7 +344,7 @@ em {
   font-size: clamp(1.6rem, 4.2vw, 2.4rem);
   font-weight: 400;
   line-height: 1.12;
-  color: var(--faint);
+  color: var(--ink);
   transition: color 0.2s ease;
   min-width: 0;
   word-wrap: break-word;
@@ -357,7 +357,7 @@ em {
   flex-shrink: 0;
   font-family: var(--serif);
   font-size: clamp(0.95rem, 2vw, 1.05rem);
-  color: var(--faint);
+  color: var(--muted);
   white-space: nowrap;
   transition: color 0.2s ease;
 }
@@ -504,7 +504,7 @@ em {
   font-family: var(--serif);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--faint);
+  color: var(--muted);
 }
 
 /* Footer --------------------------------------------------- */
