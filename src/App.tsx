@@ -103,18 +103,20 @@ export default function App() {
         <section className="section" id="about" aria-label={brief[locale]}>
           <h2>{brief[locale]}</h2>
           <ul className="meta-grid">
-            {cvData.contacts.slice(0, 3).map((c) => (
-              <li key={c.label[locale]}>
-                <span className="meta-label">{c.label[locale]}</span>
-                {c.href ? (
-                  <a href={c.href} target="_blank" rel="noreferrer">
-                    {c.value}
-                  </a>
-                ) : (
+            {cvData.contacts
+              .filter((c) => !c.href)
+              .map((c) => (
+                <li key={c.label[locale]}>
+                  <span className="meta-label">{c.label[locale]}</span>
                   <span>{c.value}</span>
-                )}
-              </li>
-            ))}
+                </li>
+              ))}
+            <li>
+              <span className="meta-label">{sections.languages[locale]}</span>
+              <span>
+                {cvData.languages.map((l) => l.name[locale]).join(" · ")}
+              </span>
+            </li>
           </ul>
         </section>
 
