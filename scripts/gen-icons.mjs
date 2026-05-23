@@ -15,11 +15,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" vi
     </linearGradient>
   </defs>
   <rect width="512" height="512" fill="#1a1815"/>
-  <g fill="none" stroke="#f7f4ec" stroke-width="52" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M176 330 V230 C176 192 256 192 256 230 V330"/>
-    <path d="M256 230 C256 192 336 192 336 230 V330"/>
+  <g fill="none" stroke="#f7f4ec" stroke-width="50" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M158 348 V184 L256 300 L354 184 V348"/>
   </g>
-  <rect x="176" y="364" width="160" height="22" rx="11" fill="url(#g)"/>
+  <rect x="158" y="372" width="196" height="22" rx="11" fill="url(#g)"/>
 </svg>`;
 
 const sizes = [
