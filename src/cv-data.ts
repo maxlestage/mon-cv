@@ -270,6 +270,8 @@ export const cvData: CVData = {
         "Axum.rs",
         "Salvo.rs",
         "Actix",
+        "SeaORM",
+        "Diesel",
         "Ruby on Rails",
         "Symfony",
         "Laravel",
