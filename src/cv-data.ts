@@ -259,7 +259,7 @@ export const cvData: CVData = {
     },
     {
       category: { fr: "Front-end", en: "Front-end" },
-      items: ["HTML", "CSS", "React.js", "Redux", "Recoil.js", "React Router", "Vue.js", "Electron.js", "Bootstrap"],
+      items: ["HTML", "CSS", "React", "Redux", "Recoil", "React Router", "Vue", "Electron", "Bootstrap"],
     },
     {
       category: { fr: "Back-end", en: "Back-end" },
