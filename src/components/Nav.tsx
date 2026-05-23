@@ -31,8 +31,8 @@ export function Nav({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
-  // Use the first letter of the brand as the small italic mark (e.g. "m")
-  const mark = brand.trim().charAt(0).toLowerCase() || "·";
+  // Use the first letter of the brand as the small italic mark (e.g. "M")
+  const mark = brand.trim().charAt(0).toUpperCase() || "·";
 
   useEffect(() => {
     if (!open) return;
