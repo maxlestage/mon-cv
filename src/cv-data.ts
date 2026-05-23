@@ -259,7 +259,7 @@ export const cvData: CVData = {
     },
     {
       category: { fr: "Front-end", en: "Front-end" },
-      items: ["React.js", "Recoil.js", "React Router", "Vue.js", "Electron.js", "Bootstrap"],
+      items: ["HTML", "CSS", "React.js", "Redux", "Recoil.js", "React Router", "Vue.js", "Electron.js", "Bootstrap"],
     },
     {
       category: { fr: "Back-end", en: "Back-end" },
@@ -278,7 +278,7 @@ export const cvData: CVData = {
     },
     {
       category: { fr: "Bases de données & outils", en: "Databases & tooling" },
-      items: ["MySQL", "PostgreSQL", "SQLite", "Heroku", "Git"],
+      items: ["MySQL", "PostgreSQL", "SQLite", "Docker", "Heroku", "Git"],
     },
   ],
 
