@@ -264,11 +264,11 @@ export const cvData: CVData = {
     {
       category: { fr: "Back-end", en: "Back-end" },
       items: [
-        "Node.js",
-        "Express.js",
-        "Prisma.js",
-        "Axum.rs",
-        "Salvo.rs",
+        "Node",
+        "Express",
+        "Prisma",
+        "Axum",
+        "Salvo",
         "Actix",
         "SeaORM",
         "Diesel",
