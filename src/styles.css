@@ -3,6 +3,7 @@
   --ink: #1a1815;
   --muted: #4b4843;
   --faint: #bcb7ab;
+  --sea: #1b6f8c;
   --line: rgba(20, 18, 15, 0.18);
   --line-soft: rgba(20, 18, 15, 0.09);
   --serif: "EB Garamond", "Cormorant Garamond", "Spectral", Georgia,
@@ -282,7 +283,7 @@ em {
   font-style: italic;
   font-weight: 400;
   font-size: clamp(0.95rem, 2vw, 1.05rem);
-  color: var(--muted);
+  color: var(--sea);
   margin-bottom: 1.4rem;
   display: inline-block;
 }
@@ -308,10 +309,10 @@ em {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(42% 135% at 12% 55%, rgba(135, 200, 228, 0.65), transparent 70%),
-    radial-gradient(46% 145% at 40% 42%, rgba(166, 216, 175, 0.6), transparent 72%),
-    radial-gradient(42% 135% at 68% 60%, rgba(135, 200, 228, 0.6), transparent 70%),
-    radial-gradient(38% 125% at 92% 48%, rgba(166, 216, 175, 0.55), transparent 74%);
+    radial-gradient(42% 135% at 12% 55%, rgba(125, 196, 224, 0.65), transparent 70%),
+    radial-gradient(46% 145% at 40% 42%, rgba(64, 150, 188, 0.6), transparent 72%),
+    radial-gradient(42% 135% at 68% 60%, rgba(125, 196, 224, 0.6), transparent 70%),
+    radial-gradient(38% 125% at 92% 48%, rgba(64, 150, 188, 0.55), transparent 74%);
   border-radius: 47% 53% 60% 40% / 60% 45% 55% 40%;
   filter: blur(1.4px);
   transform: rotate(-0.7deg);
