@@ -60,6 +60,11 @@ export const cvData: CVData = {
       href: "https://www.linkedin.com/in/max-lestage",
     },
     {
+      label: { fr: "CV en ligne", en: "Online CV" },
+      value: "maxlestage.github.io/mon-cv",
+      href: "https://maxlestage.github.io/mon-cv/#about",
+    },
+    {
       label: { fr: "Localisation", en: "Location" },
       value: "Bordeaux, France",
     },
