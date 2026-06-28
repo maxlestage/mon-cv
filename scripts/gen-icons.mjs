@@ -14,8 +14,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" vi
       <stop offset="1" stop-color="#a6d8af"/>
     </linearGradient>
   </defs>
-  <rect width="512" height="512" fill="#1a1815"/>
-  <g fill="none" stroke="#f7f4ec" stroke-width="50" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="512" height="512" fill="#ffffff"/>
+  <g fill="none" stroke="#1a1815" stroke-width="50" stroke-linecap="round" stroke-linejoin="round" transform="translate(57 0) skewX(-12)">
     <path d="M158 348 V184 L256 300 L354 184 V348"/>
   </g>
   <rect x="158" y="372" width="196" height="22" rx="11" fill="url(#g)"/>
