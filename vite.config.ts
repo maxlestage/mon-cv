@@ -2,10 +2,9 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-// Le site est servi sur https://<user>.github.io/mon-cv/
-// donc le base path doit correspondre au nom du dépôt.
+// Le site est déployé sur Heroku et servi à la racine du domaine.
 export default defineConfig({
-  base: "/mon-cv/",
+  base: "/",
   plugins: [
     react(),
     VitePWA({
