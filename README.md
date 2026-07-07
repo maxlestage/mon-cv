@@ -42,3 +42,27 @@ Le site est servi sur : **`https://maxlestage.github.io/mon-cv/`**
 > au nom du dépôt (dépôt projet GitHub Pages). Si tu renommes le dépôt, mets
 > cette valeur à jour. Pour servir à la racine (`/`), il faudrait soit un dépôt
 > nommé `maxlestage.github.io`, soit un domaine personnalisé.
+
+## Déploiement Heroku
+
+Le site (statique) peut aussi être déployé sur Heroku. Comme l'app y est servie
+à la **racine `/`** (et non `/mon-cv/`), le build Heroku force `base=/` :
+
+- [`Procfile`](Procfile) : lance un serveur statique qui écoute sur `$PORT`
+  (`serve -s dist -l $PORT`).
+- Script `heroku-postbuild` : `vite build --base=/` (les assets pointent vers
+  `/assets/...` au lieu de `/mon-cv/assets/...`).
+- `serve` est une dépendance de production (elle survit à l'élagage des
+  `devDependencies` fait par Heroku après le build).
+
+Déploiement :
+
+```bash
+heroku create            # ou: heroku git:remote -a <nom-de-ton-app>
+git push heroku master   # buildpack Node.js détecté automatiquement
+heroku open
+```
+
+> Heroku utilise le buildpack **Node.js** (npm), pas Bun : il lit `package.json`
+> et ignore `bun.lock`. Les `devDependencies` (Vite, plugins) sont installées le
+> temps du build puis élaguées ; `serve` reste disponible au runtime.
