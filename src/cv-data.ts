@@ -61,8 +61,8 @@ export const cvData: CVData = {
     },
     {
       label: { fr: "CV en ligne", en: "Online CV" },
-      value: "maxlestage.github.io/mon-cv",
-      href: "https://maxlestage.github.io/mon-cv/#about",
+      value: "cv-lestage.herokuapp.com",
+      href: "https://cv-lestage-34d2c9ae1cb0.herokuapp.com/#about",
     },
     {
       label: { fr: "Localisation", en: "Location" },
