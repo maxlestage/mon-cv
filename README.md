@@ -1,6 +1,6 @@
 # mon-cv
 
-CV en ligne bilingue (FR / EN) construit avec **Bun**, **React**, **TypeScript** et **Vite**, déployé automatiquement sur **GitHub Pages**.
+CV en ligne bilingue (FR / EN) construit avec **Bun**, **React**, **TypeScript** et **Vite**, déployé sur **Heroku**.
 
 ## Démarrer
 
@@ -28,30 +28,14 @@ Modifie ce fichier uniquement — aucun autre changement de code nécessaire.
 
 Un bouton **Imprimer / PDF** génère une version propre via le navigateur.
 
-## Déploiement GitHub Pages
-
-Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
-construit et déploie le site à chaque push sur `master`/`main`.
-
-Configuration unique côté GitHub : **Settings → Pages → Build and deployment →
-Source : GitHub Actions**.
-
-Le site est servi sur : **`https://maxlestage.github.io/mon-cv/`**
-
-> Le `base` est défini sur `/mon-cv/` dans `vite.config.ts`, ce qui correspond
-> au nom du dépôt (dépôt projet GitHub Pages). Si tu renommes le dépôt, mets
-> cette valeur à jour. Pour servir à la racine (`/`), il faudrait soit un dépôt
-> nommé `maxlestage.github.io`, soit un domaine personnalisé.
-
 ## Déploiement Heroku
 
-Le site (statique) peut aussi être déployé sur Heroku. Comme l'app y est servie
-à la **racine `/`** (et non `/mon-cv/`), le build Heroku force `base=/` :
+Le site est servi à la **racine `/`** du domaine Heroku (`base: "/"` dans
+`vite.config.ts`) :
 
 - [`Procfile`](Procfile) : lance un serveur statique qui écoute sur `$PORT`
   (`serve -s dist -l $PORT`).
-- Script `heroku-postbuild` : `vite build --base=/` (les assets pointent vers
-  `/assets/...` au lieu de `/mon-cv/assets/...`).
+- Script `heroku-postbuild` : `vite build` (build de production dans `dist`).
 - `serve` est une dépendance de production (elle survit à l'élagage des
   `devDependencies` fait par Heroku après le build).
 
@@ -62,6 +46,9 @@ heroku create            # ou: heroku git:remote -a <nom-de-ton-app>
 git push heroku master   # buildpack Node.js détecté automatiquement
 heroku open
 ```
+
+Le plus simple depuis le dashboard Heroku : onglet **Deploy** → connecter le
+dépôt GitHub → activer les **Automatic deploys** sur `master`.
 
 > Heroku utilise le buildpack **Node.js** (npm), pas Bun : il lit `package.json`
 > et ignore `bun.lock`. Les `devDependencies` (Vite, plugins) sont installées le
