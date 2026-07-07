@@ -6,11 +6,17 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "heroku-postbuild": "vite build --base=/",
+    "start": "serve -s dist -l ${PORT:-3000}"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "serve": "^14.2.4"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
