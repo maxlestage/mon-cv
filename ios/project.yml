@@ -1,0 +1,31 @@
+# Définition du projet Xcode pour XcodeGen (https://github.com/yonaskolb/XcodeGen).
+# Génère MonCV.xcodeproj à partir des sources, sans commiter le .xcodeproj.
+#
+#   cd ios && xcodegen generate && open MonCV.xcodeproj
+#
+name: MonCV
+options:
+  bundleIdPrefix: com.maxlestage
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+
+targets:
+  MonCV:
+    type: application
+    platform: iOS
+    sources:
+      - path: MonCV
+    settings:
+      base:
+        INFOPLIST_FILE: MonCV/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.maxlestage.moncv
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "5.0"
+        # Renseigne ton Team ID Apple pour signer l'app sur un vrai iPhone :
+        # DEVELOPMENT_TEAM: XXXXXXXXXX
+        CODE_SIGN_STYLE: Automatic

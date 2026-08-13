@@ -4,3 +4,10 @@ dist
 .DS_Store
 .vite
 *.tsbuildinfo
+
+# iOS / Xcode (le .xcodeproj est généré par XcodeGen depuis ios/project.yml)
+ios/MonCV.xcodeproj/
+ios/build/
+ios/DerivedData/
+*.xcuserstate
+xcuserdata/
